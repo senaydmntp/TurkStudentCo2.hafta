@@ -8,13 +8,13 @@ FROM Invoice
 WHERE invoice_id IS NULL AND customer_id IS NULL AND billing_address IS NULL AND billing_city IS NULL AND billing_country IS NULL AND billing_state IS NULL AND billingpostal_code IS NULL;
 ---- row : 0
 
-SELECT *, total * 2 AS doubled_total  -- total kolonunun 2 katını aldık
+SELECT total * 2 AS doubled_total  -- total kolonunun 2 katını aldık
 FROM Invoice
 ORDER by doubled_total DESC;     --- yeni kolonu büyükten küçüğe sıraladık
 
 ----
 SELECT 
-    CONCAT(LEFT(billing_address, 3), RIGHT(billing_address, 4)) AS "Açık Adres",
+    CONCAT(LEFT(billing_address, 3), RIGHT(billing_address, 4)) AS "Açık Adres"
     *
 FROM Invoice
 WHERE EXTRACT(YEAR FROM invoice_date) = 2013 
